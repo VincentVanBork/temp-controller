@@ -15,11 +15,11 @@ pico_sdk_init()
 # rest of your project
 
 add_executable(main
-    main.c
+    main.cpp
 )
-
+add_subdirectory(modules/pico-onewire)
 # Add pico_stdlib library which aggregates commonly used features
-target_link_libraries(main pico_stdlib pico_cyw43_arch_none)
+target_link_libraries(main pico_stdlib pico_cyw43_arch_none pico_one_wire)
 
 # create map/bin/hex/uf2 file in addition to ELF.
 pico_add_extra_outputs(main)
@@ -41,3 +41,5 @@ if (TARGET tinyusb_device)
 elseif(PICO_ON_DEVICE)
     message(WARNING "not building main because TinyUSB submodule is not initialized in the SDK")
 endif()
+
+add_definitions(-DPICO_ENTER_USB_BOOT_ON_EXIT)
