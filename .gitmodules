@@ -1,0 +1,3 @@
+[submodule "deps/pico-onewire"]
+	path = deps/pico-onewire
+	url = git@github.com:adamboardman/pico-onewire.git
